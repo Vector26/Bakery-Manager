@@ -30,7 +30,7 @@ python manage.py createsuperuser
 ## Features
 Bakery Shop ADMIN has the capability to:
 
-1.       Register and Login
+1.       Register and Login (Only an admin can create a new admin)
 
 2.       Add Ingredients like Milk, Eggs etc.
 
