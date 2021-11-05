@@ -24,3 +24,5 @@ docker run --name instanceOne -d -p 8000:8000 bakery-manager:latest
 docker exec -it instanceOne sh
 python manage.py createsuperuser
 ```
+
+![image](https://user-images.githubusercontent.com/23053807/140507023-9d77f8f3-23ec-4554-a0ed-4e76b51ae572.png)
