@@ -1,0 +1,349 @@
+{
+	"variables": [],
+	"info": {
+		"name": "zenatix",
+		"_postman_id": "667e1398-1ad3-a535-6ec8-40065d9bcad0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"description": "",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000/register/adminSignup",
+					"request": {
+						"url": "http://127.0.0.1:8000/register/adminSignup",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token 687e2a28c261428e03eeaa23beaaeb606711460b",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"AdminLevel2\",\r\n    \"password\": \"qwertgfdsa\",\r\n    \"password2\": \"qwertgfdsa\",\r\n    \"email\": \"i35war@er.com\",\r\n    \"first_name\": \"tyler\",\r\n    \"last_name\": \"bing\"\r\n}"
+						},
+						"description": "Admin Signup\n\nSchema:\n{\n    \"username\": `Username`,\n    \"password\": `actual password`,\n    \"password2\": `password for confirmation`,\n    \"email\": `Admin's email`,\n    \"first_name\": `Admin's first name`,\n    \"last_name\": `Admin's last name`\n}\n\nOnly an Admin can create a new a new Admin\nAn authorised admin user when logged-in can access this route.\n\n\"Admin-Zero\" can be created when hosting this API."
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/register/Signup",
+					"request": {
+						"url": "http://127.0.0.1:8000/register/Signup",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"CustomerLevel2\",\r\n    \"password\": \"qwertgfdsa\",\r\n    \"password2\": \"qwertgfdsa\",\r\n    \"email\": \"i35waty@er.com\",\r\n    \"first_name\": \"chandler\",\r\n    \"last_name\": \"bing\"\r\n}"
+						},
+						"description": "Customer Signup"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/login/",
+					"request": {
+						"url": "http://127.0.0.1:8000/login/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"CustomerLevel1\",\r\n    \"password\": \"qwertgfdsa\"\r\n}"
+						},
+						"description": "Login for Both Customer and Admin.\nAdmin Users have automated elevated privliges when accessing various 'OnlyForAdmin URLs'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Market",
+			"description": "",
+			"item": [
+				{
+					"name": "http://127.0.0.1:8000",
+					"request": {
+						"url": "http://127.0.0.1:8000",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 687e2a28c261428e03eeaa23beaaeb606711460b",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"ingredient\": \"Egg\",\n\t\"quantity\": 20,\n\t\"rate\": 15\n}"
+						},
+						"description": "Get the available products in bakery.\n\nQuery param \"id\" can be provided to get info about a particular individual product only.\n\n\"SP\" provided in each Product's JSON is price per piece.\n\"in_stock\" is how many products can be provided right now according to the ingredients/resources in bakery's kitchen."
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000",
+					"request": {
+						"url": "http://127.0.0.1:8000",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 38205f791b2a72a5d43ed590613b64c623915740",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"cart\":[\n\t\t\t{\n\t\t\t\t\"product\":\"c1772512-a43b-4400-9e4f-cc07b15109ec\",\n\t\t\t\t\"amount\":1\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"product\":\"3f07d333-34f8-452a-9746-4fba737df978\",\n\t\t\t\t\"amount\":3\n\t\t\t}\n\t\t]\n}"
+						},
+						"description": "Submitting your cart\nJSON Object Syntax:\n{\n\t\"cart\":[\n\t\t{\n\t\t\t\"id\":\"ProductID which ypu wanna order\",\n\t\t\t\"amount\":\"Quantity of product you want\"\n\t\t},... and so on\n\t]\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "http://127.0.0.1:8000/order_history",
+					"request": {
+						"url": "http://127.0.0.1:8000/order_history",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 38205f791b2a72a5d43ed590613b64c623915740",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"fd3364fb-76e1-4a79-8149-6db003828a47\"\n}"
+						},
+						"description": "Displays the \"order history\" of the customer logged in currently."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"description": "",
+			"item": [
+				{
+					"name": "Ingredients",
+					"description": "",
+					"item": [
+						{
+							"name": "http://127.0.0.1:8000/ingredients",
+							"request": {
+								"url": "http://127.0.0.1:8000/ingredients",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 687e2a28c261428e03eeaa23beaaeb606711460b",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {},
+								"description": "Gets all the ingredients in the current inventory of bakery.\nTo get a particular ingredient's info, use \"id\" query param.\nSearch using a keyword name of ingredient with query param \"search\".\ne.g\n?search=cocoa\n\nIngredients have the following schema:\n{\n    \"id\": `DB provided ID`,\n    \"ingredient\": `ingredient name`,\n    \"quantity\": `no. of units in stock`,\n    \"rate\": `rate per unit`\n}"
+							},
+							"response": []
+						},
+						{
+							"name": "http://127.0.0.1:8000/ingredients",
+							"request": {
+								"url": "http://127.0.0.1:8000/ingredients",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 687e2a28c261428e03eeaa23beaaeb606711460b",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":3,\n\t\"ingredient\":\"Flour\",\n\t\"quantity\":35,\n\t\"rate\":30\n}"
+								},
+								"description": "Create/Update ingredients in your inventory.\r\nThe request needs either 'id' or 'ingredient' key to update an existing Object.\r\nBut to add a new ingredient 'ingredient' is required.\r\n\"quantity\" and \"rate\" are optional but usually the properties you wanna update.\r\n\r\nrequest body data schema\r\n\t{\r\n\t\t\"id\":3,\r\n\t\t\"ingredient\":\"Flour\",\r\n\t\t\"quantity\":35,\r\n\t\t\"rate\":30\r\n\t}"
+							},
+							"response": []
+						},
+						{
+							"name": "http://127.0.0.1:8000/ingredients?id",
+							"request": {
+								"url": {
+									"raw": "http://127.0.0.1:8000/ingredients?id",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"ingredients"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "",
+											"equals": false,
+											"description": ""
+										}
+									],
+									"variable": []
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 687e2a28c261428e03eeaa23beaaeb606711460b",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {},
+								"description": "To remove an ingredient.\nProvide it's 'id' in query params."
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Products",
+					"description": "",
+					"item": [
+						{
+							"name": "http://127.0.0.1:8000/products",
+							"request": {
+								"url": "http://127.0.0.1:8000/products",
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 687e2a28c261428e03eeaa23beaaeb606711460b",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"product_name\":\"Pastry\",\n\t\"ingredients\":[\n\t\t{\n\t\t\t\"ingredient\":2,\n\t\t\t\"amount\":27\n\t\t},\n\t\t{\n\t\t\t\"ingredient\":4,\n\t\t\t\"amount\":30\n\t\t}\n\t\t],\n\t\"SP\":1900\n}"
+								},
+								"description": "Get the info about registered products that are/arent in stock.\n'id' query param for getting info about a particular Product.\n{\n    \"product_name\": `Product Name`,\n    \"id\": `Product ID`,\n    \"ingredients\": [`List of ingredient objects`],\n    \"SP\": `Manual Selling Price set through a POST Request`,\n    \"CP\": `Cost price because of amount of ingredients required`,\n    \"in_stock\": `Amount in stock`\n}"
+							},
+							"response": []
+						},
+						{
+							"name": "http://127.0.0.1:8000/products",
+							"request": {
+								"url": "http://127.0.0.1:8000/products",
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 687e2a28c261428e03eeaa23beaaeb606711460b",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"\",\n\t\"product_name\":\"\",\n\t\"SP\":0,\n\t\"ingredients\":[\n\t\t\t{\n\t\t\t\t\"id\":0,\n\t\t\t\t\"amount_required\":0\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\":0,\n\t\t\t\t\"amount_required\":0\n\t\t\t}\n\t\t]\n}"
+								},
+								"description": "Updating or creating new Product.\nTo create just the \"product_name\" and JSON list 'ingredients' is needed.\nTo update 'id' is needed\n\n{\n\t\"id\":`product's uuid4 incase it's an updation otherwise obsolete`,\n\t\"product_name\":`product name to be, in case of updation, name is also update`,\n\t\"SP\":`(integer) setting up the Selling Price`,\n\t\"ingredients\":[\n\t\t\t{\n\t\t\t\t\"id\": `ingredient id which the product should have`,\n\t\t\t\t\"amount_required\":`amount of that ingredient`\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"id\":0,\n\t\t\t\t\"amount_required\":0\n\t\t\t}\n\t\t]\n}\n\nP.s: SP cannot be setup during creation of a Product, after a product has been created, CP(cost price) is returned, therefore, admin can accordingly setup the SP for profit during an update POST request."
+							},
+							"response": []
+						},
+						{
+							"name": "http://127.0.0.1:8000/products",
+							"request": {
+								"url": "http://127.0.0.1:8000/products",
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token 687e2a28c261428e03eeaa23beaaeb606711460b",
+										"description": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"description": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"\"\n}"
+								},
+								"description": "Delete the product through the product 'id':\n\nBody data schema\n{\n\t\"id\":`uuid.uuid4 type id`\n}"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}
